@@ -3,6 +3,7 @@ import pygame
 from renderer import Renderer
 from input import InputMapper
 from camera import Camera
+from PhysicsSim.Simulator.controller import Controller
 
 
 class Gui:
@@ -40,11 +41,12 @@ class Gui:
             # --- Rendering ---
             snapshot = self.controller.get_snapshot()
             self.screen.fill((240, 240, 245))
-            # self.renderer.draw(snapshot, self.camera)
+            self.renderer.draw(snapshot, self.camera)
             pygame.display.flip()
 
         pygame.quit()
 
 
 if __name__ == "__main__":
-    Gui(controller=Controller, width=800, height=600).run()
+    c = Controller(world={})  # Placeholder world
+    Gui(controller=c, width=800, height=600).run()
